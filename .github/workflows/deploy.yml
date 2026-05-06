@@ -32,6 +32,10 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    # 👇 只加了这一段权限，解决 404 报错
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
